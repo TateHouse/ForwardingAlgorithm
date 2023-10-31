@@ -1,0 +1,8 @@
+{
+	"name": "csc-344-assignment-3",
+	"version": "1.0.0",
+	"description": "Assignment 3 for CSC 344",
+	"dependencies": [
+		"gtest"
+	]
+}
