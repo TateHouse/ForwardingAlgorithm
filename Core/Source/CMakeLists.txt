@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 
 SET(SOURCE_FILES
+		CSVRoutingTableLoader.cpp
 		IPv4.cpp
 		RouteMapping.cpp)
 
