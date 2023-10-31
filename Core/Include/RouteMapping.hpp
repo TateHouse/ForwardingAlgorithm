@@ -11,7 +11,7 @@ public:
     RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port);
 
 public:
-    friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping);
+    friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping) noexcept;
 
 public:
     [[nodiscard]] const std::bitset<32>& getSubnetMask() const noexcept;

@@ -3,17 +3,19 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "Utility/StringUtility.hpp"
+
 namespace Core {
 RouteMapping::RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port)
         : ip {ip}, prefixLength {prefixLength}, subnetMask {calculateSubnetMask()}, port {port} {
 
 }
 
-std::ostream& operator<<(std::ostream& outputStream, const RouteMapping& routeMapping) {
-    const auto& ip {routeMapping.getIp()};
+std::ostream& operator<<(std::ostream& outputStream, const RouteMapping& routeMapping) noexcept {
+    const auto& address {routeMapping.getIp().getAddress()};
 
-    outputStream << "IPv4 (Binary): " << ip.getAddressInBinary(true) << '\n';
-    outputStream << "IPv4 (Decimal): " << ip.getAddressInDecimal(true) << '\n';
+    outputStream << "IPv4 (Binary): " << Utility::StringUtility::getBinaryString(address, true) << '\n';
+    outputStream << "IPv4 (Decimal): " << Utility::StringUtility::getDecimalString(address, true) << '\n';
     outputStream << "Prefix Length: " << static_cast<int>(routeMapping.getPrefixLength()) << '\n';
     outputStream << "Subnet Mask (Binary): " << routeMapping.getSubnetMaskInBinary(true) << '\n';
     outputStream << "Port: " << routeMapping.getPort();
