@@ -4,6 +4,7 @@ SET(HEADER_FILES
 		CSVRoutingTableLoader.hpp
 		IPv4.hpp
 		RouteMapping.hpp
+		Router.hpp
 		RoutingTableLoader.hpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${HEADER_FILES})

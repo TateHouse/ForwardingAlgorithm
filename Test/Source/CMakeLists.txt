@@ -3,7 +3,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 SET(SOURCE_FILES
 		CSVRoutingTableLoaderTest.cpp
 		IPv4Test.cpp
-		RouteMappingTest.cpp)
+		RouteMappingTest.cpp
+		RouterTest.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
 
