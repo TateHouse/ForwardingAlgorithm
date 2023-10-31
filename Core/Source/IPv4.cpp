@@ -29,6 +29,30 @@ const std::string IPv4::getAddressInBinary(const bool includeOctetSeparators) co
     return addressStream.str();
 }
 
+const std::string IPv4::getAddressInDecimal(const bool includeOctetSeparators) const {
+    std::ostringstream addressStream {};
+
+    for (auto octetIndex {3}; octetIndex >= 0; --octetIndex) {
+        auto octetDecimal {0};
+
+        for (auto bitIndex {0}; bitIndex < 8; ++bitIndex) {
+            const auto index {bitIndex + (octetIndex * 8)};
+
+            if (address[index]) {
+                octetDecimal |= (1 << bitIndex);
+            }
+        }
+
+        addressStream << octetDecimal;
+
+        if (octetIndex > 0 && includeOctetSeparators) {
+            addressStream << '.';
+        }
+    }
+
+    return addressStream.str();
+}
+
 const std::bitset<32> IPv4::parse(const std::string& address) {
     static constexpr auto octetSeparator {'.'};
     auto octetSeparatorCount {0};

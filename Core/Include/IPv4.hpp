@@ -11,6 +11,7 @@ public:
 public:
     [[nodiscard]] const std::bitset<32>& getAddress() const;
     [[nodiscard]] const std::string getAddressInBinary(const bool includeOctetSeparators) const;
+    [[nodiscard]] const std::string getAddressInDecimal(const bool includeOctetSeparators) const;
 
 private:
     static const std::bitset<32> parse(const std::string& address);

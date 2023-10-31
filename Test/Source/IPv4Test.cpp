@@ -45,4 +45,16 @@ TEST_F(IPv4Test, WhenGetAddressInBinaryWithOctetSeparators_ThenReturnsBinaryStri
 
     EXPECT_THAT(ip.getAddressInBinary(true), testing::Eq(expected));
 }
+
+TEST_F(IPv4Test, WhenGetAddressInDecimalWithoutOctetSeparators_ThenReturnsDecimalStringWithoutOctetSeparators) {
+    const std::string expected {"152201920"};
+
+    EXPECT_THAT(ip.getAddressInDecimal(false), testing::Eq(expected));
+}
+
+TEST_F(IPv4Test, WhenGetAddressInDecimalWithOctetSeparators_ThenReturnsDecimalStringWithOctetSeparators) {
+    const std::string expected {"152.20.192.0"};
+
+    EXPECT_THAT(ip.getAddressInDecimal(true), testing::Eq(expected));
+}
 }
