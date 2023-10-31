@@ -12,6 +12,23 @@ const std::bitset<32>& IPv4::getAddress() const {
     return address;
 }
 
+const std::string IPv4::getAddressInBinary(const bool includeOctetSeparators) const {
+    std::ostringstream addressStream {};
+
+    for (auto octetIndex {3}; octetIndex >= 0; --octetIndex) {
+        for (auto bitIndex {7}; bitIndex >= 0; --bitIndex) {
+            const auto index {bitIndex + (octetIndex * 8)};
+            addressStream << address[index];
+        }
+
+        if (octetIndex > 0 && includeOctetSeparators) {
+            addressStream << ' ';
+        }
+    }
+
+    return addressStream.str();
+}
+
 const std::bitset<32> IPv4::parse(const std::string& address) {
     static constexpr auto octetSeparator {'.'};
     auto octetSeparatorCount {0};

@@ -33,4 +33,16 @@ TEST_F(IPv4Test, GivenIPv4StringWithOctetWithTooManyDigits_WhenConstruct_ThenThr
 TEST_F(IPv4Test, GivenIPv4StringWithOctetWithTooFewDigits_WhenConstruct_ThenThrowsInvalidArgument) {
     EXPECT_THROW(IPv4 {"152.20..192"}, std::invalid_argument);
 }
+
+TEST_F(IPv4Test, WhenGetAddressInBinaryWithoutOctetSeparators_ThenReturnsBinaryStringWithoutOctetSeparators) {
+    const std::string expected {"10011000000101001100000000000000"};
+
+    EXPECT_THAT(ip.getAddressInBinary(false), testing::Eq(expected));
+}
+
+TEST_F(IPv4Test, WhenGetAddressInBinaryWithOctetSeparators_ThenReturnsBinaryStringWithOctetSeparators) {
+    const std::string expected {"10011000 00010100 11000000 00000000"};
+
+    EXPECT_THAT(ip.getAddressInBinary(true), testing::Eq(expected));
+}
 }
