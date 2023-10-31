@@ -8,6 +8,10 @@ IPv4::IPv4(const std::string& address) : address {parse(address)} {
 
 }
 
+const bool IPv4::operator==(const IPv4& other) const noexcept {
+    return address == other.address;
+}
+
 const std::bitset<32>& IPv4::getAddress() const {
     return address;
 }
