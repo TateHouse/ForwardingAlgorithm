@@ -26,6 +26,18 @@ TEST_F(RouteMappingTest, GivenPrefixGreaterThanThirtyTwo_WhenConstruct_ThenThrow
     EXPECT_THROW(RouteMapping(ip, 33, 2), std::invalid_argument);
 }
 
+TEST_F(RouteMappingTest, GivenTwoEqualRouteMappings_WhenCompare_ThenReturnsTrue) {
+    const auto other {RouteMapping {IPv4 {"152.20.192.0"}, 19, 2}};
+
+    EXPECT_THAT(routeMapping, testing::Eq(other));
+}
+
+TEST_F(RouteMappingTest, GivenTwoNonEqualRouteMappings_WhenCompare_ThenReturnsFalse) {
+    const auto other {RouteMapping {IPv4 {"65.0.0.0"}, 8, 3}};
+
+    EXPECT_THAT(routeMapping, testing::Ne(other));
+}
+
 TEST_F(RouteMappingTest, WhenInsertionOperator_ThenReturnsExpectedString) {
     std::ostringstream resultStream {};
     resultStream << routeMapping;

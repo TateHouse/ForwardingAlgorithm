@@ -11,6 +11,10 @@ RouteMapping::RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned 
 
 }
 
+const bool RouteMapping::operator==(const RouteMapping& other) const noexcept {
+    return ip == other.ip && prefixLength == other.prefixLength && subnetMask == other.subnetMask && port == other.port;
+}
+
 std::ostream& operator<<(std::ostream& outputStream, const RouteMapping& routeMapping) noexcept {
     const auto& address {routeMapping.getIp().getAddress()};
 

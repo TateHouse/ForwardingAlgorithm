@@ -11,6 +11,7 @@ public:
     RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port);
 
 public:
+    [[nodiscard]] const bool operator==(const RouteMapping& other) const noexcept;
     friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping) noexcept;
 
 public:
