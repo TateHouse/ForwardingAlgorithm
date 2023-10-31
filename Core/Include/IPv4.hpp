@@ -10,6 +10,7 @@ public:
 
 public:
     [[nodiscard]] const bool operator==(const IPv4& other) const noexcept;
+    [[nodiscard]] const std::bitset<32> operator&(const std::bitset<32>& other) const noexcept;
 
 public:
     [[nodiscard]] const std::bitset<32>& getAddress() const;

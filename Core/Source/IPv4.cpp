@@ -12,6 +12,10 @@ const bool IPv4::operator==(const IPv4& other) const noexcept {
     return address == other.address;
 }
 
+const std::bitset<32> IPv4::operator&(const std::bitset<32>& other) const noexcept {
+    return address & other;
+}
+
 const std::bitset<32>& IPv4::getAddress() const {
     return address;
 }
