@@ -10,7 +10,7 @@ public:
 
 public:
     virtual void execute() noexcept override;
-    virtual const std::string getName() const noexcept override;
-    virtual const std::string getDescription() const noexcept override;
+    [[nodiscard]] virtual const std::string getName() const noexcept override;
+    [[nodiscard]] virtual const std::string getDescription() const noexcept override;
 };
 }
