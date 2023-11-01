@@ -26,14 +26,12 @@ void Application::update() noexcept {
 }
 
 void Application::shutdown() noexcept {
-    isRunning = false;
-
     std::cout << "==================================================" << '\n';
     std::cout << "Shutting down..." << '\n';
     std::cout << "==================================================" << '\n';
 }
 
 [[nodiscard]] const bool Application::getIsRunning() const noexcept {
-    return isRunning;
+    return context.getIsRunning();
 }
 }

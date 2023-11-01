@@ -2,6 +2,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 
 SET(SOURCE_FILES
 		Application.cpp
-		CommandRepository.cpp)
+		Command.cpp
+		CommandRepository.cpp
+		Context.cpp
+		QuitCommand.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})

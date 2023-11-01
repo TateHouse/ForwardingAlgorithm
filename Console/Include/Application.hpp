@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "CommandRepository.hpp"
-#include "Router.hpp"
 
 namespace Console {
 class Application final {
@@ -14,11 +13,8 @@ public:
 
     [[nodiscard]] const bool getIsRunning() const noexcept;
 
-    [[nodiscard]] const CommandRepository& getCommandRepository() const noexcept;
-
 private:
-    bool isRunning {true};
-    CommandRepository commandRepository {};
-    std::unique_ptr<Core::Router> router {nullptr};
+    Context context {};
+    CommandRepository commandRepository {context};
 };
 }
