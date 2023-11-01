@@ -5,6 +5,7 @@ SET(HEADER_FILES
 		Command.hpp
 		CommandRepository.hpp
 		Context.hpp
-		QuitCommand.hpp)
+		QuitCommand.hpp
+		SelectRoutingTableCommand.hpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${HEADER_FILES})

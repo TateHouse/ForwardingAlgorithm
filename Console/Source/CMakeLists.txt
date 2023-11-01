@@ -5,6 +5,7 @@ SET(SOURCE_FILES
 		Command.cpp
 		CommandRepository.cpp
 		Context.cpp
-		QuitCommand.cpp)
+		QuitCommand.cpp
+		SelectRoutingTableCommand.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})

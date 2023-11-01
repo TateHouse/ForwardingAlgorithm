@@ -1,10 +1,15 @@
 #include "CommandRepository.hpp"
 
 #include "QuitCommand.hpp"
+#include "SelectRoutingTableCommand.hpp"
 
 namespace Console {
 CommandRepository::CommandRepository(Context& context) : context {context} {
-    commands.emplace("quit", std::make_unique<QuitCommand>(context));
+    auto selectRoutingTableCommand {std::make_unique<SelectRoutingTableCommand>(context)};
+    auto quitCommand {std::make_unique<QuitCommand>(context)};
+
+    commands.emplace(selectRoutingTableCommand->getName(), std::move(selectRoutingTableCommand));
+    commands.emplace(quitCommand->getName(), std::move(quitCommand));
 }
 
 const bool CommandRepository::execute(const std::string_view command) const noexcept {
