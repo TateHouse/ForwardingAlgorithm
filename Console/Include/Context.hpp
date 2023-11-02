@@ -9,6 +9,11 @@
 #include "RoutingTableLoader.hpp"
 
 namespace Console {
+/**
+ * @class Context
+ *
+ * @brief A class that holds the shared state of the application.
+ */
 class Context final {
 public:
     [[nodiscard]] const bool getIsRunning() const noexcept;

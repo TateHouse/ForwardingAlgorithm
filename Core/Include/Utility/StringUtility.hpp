@@ -4,13 +4,36 @@
 #include <string>
 
 namespace Core::Utility {
+/**
+ * @class StringUtility
+ *
+ * @brief Provides utility functions for strings.
+ */
 class StringUtility final {
 public:
     StringUtility() noexcept = delete;
     ~StringUtility() noexcept = delete;
 
 public:
-    static const std::string getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators);
-    static const std::string getDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators);
+    /**
+     * @brief Converts a bitset to a binary string.
+     *
+     * @param bitset The bitset to convert.
+     * @param includeOctetSeparators Whether or not to include octet separators.
+     *
+     * @return The binary string.
+     */
+    static const std::string getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
+
+    /**
+     * @brief Converts a bitset to a decimal string.
+     *
+     * @param bitset The bitset to convert.
+     * @param includeOctetSeparators Whether or not to include octet separators.
+     *
+     * @return The decimal string.
+     */
+    static const std::string getDecimalString(const std::bitset<32>& bitset,
+                                              const bool includeOctetSeparators) noexcept;
 };
 }
