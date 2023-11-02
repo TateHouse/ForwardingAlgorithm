@@ -6,6 +6,6 @@ SET(SOURCE_FILES
 		GetForwardingPortCommand.cpp
 		GetForwardingPortsCommand.cpp
 		QuitCommand.cpp
-		SelectRoutingTableCommand.cpp)
+		LoadRoutingTableCommand.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})

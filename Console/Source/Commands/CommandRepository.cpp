@@ -3,13 +3,13 @@
 #include "Commands/GetForwardingPortCommand.hpp"
 #include "Commands/GetForwardingPortsCommand.hpp"
 #include "Commands/QuitCommand.hpp"
-#include "Commands/SelectRoutingTableCommand.hpp"
+#include "Commands/LoadRoutingTableCommand.hpp"
 
 namespace Console::Commands {
 CommandRepository::CommandRepository(Context& context) : context {context} {
     auto getForwardingPortCommand {std::make_unique<GetForwardingPortCommand>(context)};
     auto getForwardingPortsCommand {std::make_unique<GetForwardingPortsCommand>(context)};
-    auto selectRoutingTableCommand {std::make_unique<SelectRoutingTableCommand>(context)};
+    auto selectRoutingTableCommand {std::make_unique<LoadRoutingTableCommand>(context)};
     auto quitCommand {std::make_unique<QuitCommand>(context)};
 
     commands.try_emplace(getForwardingPortCommand->getName(), std::move(getForwardingPortCommand));

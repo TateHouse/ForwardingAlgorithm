@@ -6,6 +6,6 @@ SET(HEADER_FILES
 		GetForwardingPortCommand.hpp
 		GetForwardingPortsCommand.hpp
 		QuitCommand.hpp
-		SelectRoutingTableCommand.hpp)
+		LoadRoutingTableCommand.hpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${HEADER_FILES})

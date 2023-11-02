@@ -3,10 +3,10 @@
 #include "Command.hpp"
 
 namespace Console::Commands {
-class SelectRoutingTableCommand final : public Command {
+class LoadRoutingTableCommand final : public Command {
 public:
-    explicit SelectRoutingTableCommand(Context& context) noexcept;
-    virtual ~SelectRoutingTableCommand() noexcept override = default;
+    explicit LoadRoutingTableCommand(Context& context) noexcept;
+    virtual ~LoadRoutingTableCommand() noexcept override = default;
 
 public:
     virtual void execute() noexcept override;

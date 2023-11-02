@@ -1,15 +1,15 @@
-#include "Commands/SelectRoutingTableCommand.hpp"
+#include "Commands/LoadRoutingTableCommand.hpp"
 
 #include <memory>
 
 #include "CSVRoutingTableLoader.hpp"
 
 namespace Console::Commands {
-SelectRoutingTableCommand::SelectRoutingTableCommand(Console::Context& context) noexcept: Command {context} {
+LoadRoutingTableCommand::LoadRoutingTableCommand(Console::Context& context) noexcept: Command {context} {
 
 }
 
-void SelectRoutingTableCommand::execute() noexcept {
+void LoadRoutingTableCommand::execute() noexcept {
     try {
         std::cout << "Enter the path to the routing table: ";
         std::string pathInput {};
@@ -46,11 +46,11 @@ void SelectRoutingTableCommand::execute() noexcept {
     }
 }
 
-const std::string SelectRoutingTableCommand::getName() const noexcept {
-    return "select-routing-table";
+const std::string LoadRoutingTableCommand::getName() const noexcept {
+    return "load-routing-table";
 }
 
-const std::string SelectRoutingTableCommand::getDescription() const noexcept {
-    return "Selects a routing table to load into the router. If a routing table is already loaded, it will be unloaded and replaced with the new one.";
+const std::string LoadRoutingTableCommand::getDescription() const noexcept {
+    return "Loads a routing table into the router. If a router already exists, it will be replaced.";
 }
 }
