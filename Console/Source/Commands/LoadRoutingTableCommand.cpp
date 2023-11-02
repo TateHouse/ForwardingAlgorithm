@@ -47,7 +47,7 @@ void LoadRoutingTableCommand::execute() noexcept {
 }
 
 const std::string LoadRoutingTableCommand::getName() const noexcept {
-    return "load-routing-table";
+    return "load";
 }
 
 const std::string LoadRoutingTableCommand::getDescription() const noexcept {

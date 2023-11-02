@@ -26,7 +26,7 @@ void GetForwardingPortCommand::execute() noexcept {
 }
 
 const std::string GetForwardingPortCommand::getName() const noexcept {
-    return "get-forwarding-port";
+    return "port";
 }
 
 const std::string GetForwardingPortCommand::getDescription() const noexcept {
