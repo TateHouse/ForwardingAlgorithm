@@ -1,10 +1,10 @@
-#include "SelectRoutingTableCommand.hpp"
+#include "Commands/SelectRoutingTableCommand.hpp"
 
 #include <memory>
 
 #include "CSVRoutingTableLoader.hpp"
 
-namespace Console {
+namespace Console::Commands {
 SelectRoutingTableCommand::SelectRoutingTableCommand(Console::Context& context) noexcept: Command {context} {
 
 }

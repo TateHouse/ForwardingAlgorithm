@@ -7,7 +7,7 @@
 #include "Command.hpp"
 #include "Context.hpp"
 
-namespace Console {
+namespace Console::Commands {
 class CommandRepository final {
 public:
     explicit CommandRepository(Context& context);

@@ -2,7 +2,7 @@
 
 #include "Command.hpp"
 
-namespace Console {
+namespace Console::Commands {
 class GetForwardingPortsCommand final : public Command {
 public:
     explicit GetForwardingPortsCommand(Context& context) noexcept;

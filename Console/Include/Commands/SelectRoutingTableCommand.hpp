@@ -2,7 +2,7 @@
 
 #include "Command.hpp"
 
-namespace Console {
+namespace Console::Commands {
 class SelectRoutingTableCommand final : public Command {
 public:
     explicit SelectRoutingTableCommand(Context& context) noexcept;

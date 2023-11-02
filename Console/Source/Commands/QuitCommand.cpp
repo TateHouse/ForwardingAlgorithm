@@ -1,11 +1,11 @@
-#include "QuitCommand.hpp"
+#include "Commands/QuitCommand.hpp"
 
 #include <iostream>
 #include <memory>
 
 #include "TextForwardedPortsWriter.hpp"
 
-namespace Console {
+namespace Console::Commands {
 QuitCommand::QuitCommand(Context& context) noexcept: Command {context} {
 
 }

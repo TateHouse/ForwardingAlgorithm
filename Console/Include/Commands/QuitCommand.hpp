@@ -2,7 +2,7 @@
 
 #include "Command.hpp"
 
-namespace Console {
+namespace Console::Commands {
 class QuitCommand final : public Command {
 public:
     explicit QuitCommand(Context& context) noexcept;

@@ -1,11 +1,11 @@
-#include "CommandRepository.hpp"
+#include "Commands/CommandRepository.hpp"
 
-#include "GetForwardingPortCommand.hpp"
-#include "GetForwardingPortsCommand.hpp"
-#include "QuitCommand.hpp"
-#include "SelectRoutingTableCommand.hpp"
+#include "Commands/GetForwardingPortCommand.hpp"
+#include "Commands/GetForwardingPortsCommand.hpp"
+#include "Commands/QuitCommand.hpp"
+#include "Commands/SelectRoutingTableCommand.hpp"
 
-namespace Console {
+namespace Console::Commands {
 CommandRepository::CommandRepository(Context& context) : context {context} {
     auto getForwardingPortCommand {std::make_unique<GetForwardingPortCommand>(context)};
     auto getForwardingPortsCommand {std::make_unique<GetForwardingPortsCommand>(context)};

@@ -4,7 +4,7 @@
 
 #include "Context.hpp"
 
-namespace Console {
+namespace Console::Commands {
 class Command {
 public:
     explicit Command(Context& context) noexcept;

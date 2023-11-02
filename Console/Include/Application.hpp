@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CommandRepository.hpp"
+#include "Commands/CommandRepository.hpp"
 
 namespace Console {
 class Application final {
@@ -13,6 +13,6 @@ public:
 
 private:
     Context context {};
-    CommandRepository commandRepository {context};
+    Commands::CommandRepository commandRepository {context};
 };
 }

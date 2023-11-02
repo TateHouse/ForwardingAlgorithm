@@ -1,4 +1,4 @@
-#include "GetForwardingPortsCommand.hpp"
+#include "Commands/GetForwardingPortsCommand.hpp"
 
 #include <algorithm>
 #include <random>
@@ -6,7 +6,7 @@
 #include "IPv4.hpp"
 #include "TextIPv4Loader.hpp"
 
-namespace Console {
+namespace Console::Commands {
 GetForwardingPortsCommand::GetForwardingPortsCommand(Context& context) noexcept: Command {context} {
 
 }

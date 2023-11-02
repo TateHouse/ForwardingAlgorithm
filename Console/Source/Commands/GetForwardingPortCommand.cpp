@@ -1,8 +1,8 @@
-#include "GetForwardingPortCommand.hpp"
+#include "Commands/GetForwardingPortCommand.hpp"
 
 #include "IPv4.hpp"
 
-namespace Console {
+namespace Console::Commands {
 GetForwardingPortCommand::GetForwardingPortCommand(Context& context) noexcept: Command {context} {
 
 }
