@@ -18,7 +18,7 @@ class Context final {
 public:
     [[nodiscard]] const bool getIsRunning() const noexcept;
     void setIsNotRunning() noexcept;
-    [[nodiscard]] const std::unique_ptr<Core::Router>& getRouter() const noexcept;
+    [[nodiscard]] const std::unique_ptr<Core::Router>& getRouter() const;
     void setRouter(const Core::RoutingTableLoader& routingTableLoader) noexcept;
     void addForwardedPort(const Core::IPv4& ip, const unsigned int port) noexcept;
     [[nodiscard]] const std::vector<std::pair<Core::IPv4, unsigned int>>& getForwardedPorts() const noexcept;

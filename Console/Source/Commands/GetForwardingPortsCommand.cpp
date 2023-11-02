@@ -52,6 +52,10 @@ void GetForwardingPortsCommand::execute() noexcept {
         std::cout << "--------------------------------------------------" << '\n';
         std::cout << exception.what() << '\n';
         std::cout << "--------------------------------------------------" << '\n';
+    } catch (const std::runtime_error& exception) {
+        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << exception.what() << '\n';
+        std::cout << "--------------------------------------------------" << '\n';
     }
 }
 

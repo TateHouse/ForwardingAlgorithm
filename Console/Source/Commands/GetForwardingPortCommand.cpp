@@ -18,7 +18,11 @@ void GetForwardingPortCommand::execute() noexcept {
 
         std::cout << "Port: " << port << '\n';
         context.addForwardedPort(address, port);
-    } catch (std::invalid_argument& exception) {
+    } catch (const std::invalid_argument& exception) {
+        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << exception.what() << '\n';
+        std::cout << "--------------------------------------------------" << '\n';
+    } catch (const std::runtime_error& exception) {
         std::cout << "--------------------------------------------------" << '\n';
         std::cout << exception.what() << '\n';
         std::cout << "--------------------------------------------------" << '\n';

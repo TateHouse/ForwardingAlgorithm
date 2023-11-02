@@ -9,7 +9,11 @@ void Context::setIsNotRunning() noexcept {
     isRunning = false;
 }
 
-const std::unique_ptr<Core::Router>& Context::getRouter() const noexcept {
+const std::unique_ptr<Core::Router>& Context::getRouter() const {
+    if (!router) {
+        throw std::runtime_error {"The router has not been set"};
+    }
+
     return router;
 }
 
