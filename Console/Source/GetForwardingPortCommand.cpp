@@ -17,6 +17,7 @@ void GetForwardingPortCommand::execute() noexcept {
         const auto port {context.getRouter()->getForwardingPort(address)};
 
         std::cout << "Port: " << port << '\n';
+        context.addForwardedPort(address, port);
     } catch (std::invalid_argument& exception) {
         std::cout << "--------------------------------------------------" << '\n';
         std::cout << exception.what() << '\n';

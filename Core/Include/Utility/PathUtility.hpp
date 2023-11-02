@@ -11,5 +11,6 @@ public:
 
 public:
     static std::filesystem::path validatePath(const std::filesystem::path& path, const std::string_view extension);
+    static std::filesystem::path createFile(const std::filesystem::path& path, const std::string_view extension);
 };
 }

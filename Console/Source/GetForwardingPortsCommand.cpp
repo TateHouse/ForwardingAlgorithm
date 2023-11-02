@@ -32,7 +32,7 @@ void GetForwardingPortsCommand::execute() noexcept {
         if (shuffleInput == "y") {
             std::random_device randomDevice {};
             std::mt19937 randomEngine {randomDevice()};
-            std::shuffle(addresses.begin(), addresses.end(), randomEngine);
+            std::ranges::shuffle(addresses, randomEngine);
         } else {
             std::cout << "The addresses loaded from the file will not be shuffled." << '\n';
         }
@@ -41,6 +41,7 @@ void GetForwardingPortsCommand::execute() noexcept {
         for (const auto& address : addresses) {
             const auto port {context.getRouter()->getForwardingPort(address)};
             ports.emplace_back(port);
+            context.addForwardedPort(address, port);
         }
 
         std::cout << "Ports: " << '\n';

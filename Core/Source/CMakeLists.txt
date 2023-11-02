@@ -5,6 +5,7 @@ SET(SOURCE_FILES
 		IPv4.cpp
 		RouteMapping.cpp
 		Router.cpp
+		TextForwardedPortsWriter.cpp
 		TextIPv4Loader.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
