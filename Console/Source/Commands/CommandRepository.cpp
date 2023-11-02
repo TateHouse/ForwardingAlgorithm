@@ -2,6 +2,7 @@
 
 #include "Commands/GetForwardingPortCommand.hpp"
 #include "Commands/GetForwardingPortsCommand.hpp"
+#include "Commands/HelpCommand.hpp"
 #include "Commands/QuitCommand.hpp"
 #include "Commands/LoadRoutingTableCommand.hpp"
 
@@ -16,6 +17,16 @@ CommandRepository::CommandRepository(Context& context) : context {context} {
     commands.try_emplace(getForwardingPortsCommand->getName(), std::move(getForwardingPortsCommand));
     commands.try_emplace(selectRoutingTableCommand->getName(), std::move(selectRoutingTableCommand));
     commands.try_emplace(quitCommand->getName(), std::move(quitCommand));
+
+    std::vector<std::reference_wrapper<Command>> commandReferences {};
+    commandReferences.reserve(commands.size());
+
+    for (const auto& command : commands) {
+        commandReferences.emplace_back(*command.second);
+    }
+
+    auto helpCommand {std::make_unique<HelpCommand>(context, commandReferences)};
+    commands.try_emplace(helpCommand->getName(), std::move(helpCommand));
 }
 
 const bool CommandRepository::execute(const std::string_view command) const noexcept {
