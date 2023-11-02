@@ -47,6 +47,6 @@ const std::string QuitCommand::getName() const noexcept {
 }
 
 const std::string QuitCommand::getDescription() const noexcept {
-    return "Quits the console application.";
+    return "Quits the console application and allows the user to save the forwarded ports to a file.";
 }
 }
