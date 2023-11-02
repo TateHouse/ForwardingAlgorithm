@@ -4,7 +4,8 @@ SET(SOURCE_FILES
 		CSVRoutingTableLoader.cpp
 		IPv4.cpp
 		RouteMapping.cpp
-		Router.cpp)
+		Router.cpp
+		TextIPv4Loader.cpp)
 
 TARGET_SOURCES(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
 
