@@ -12,7 +12,7 @@ LoadRoutingTableCommand::LoadRoutingTableCommand(Console::Context& context) noex
 
 void LoadRoutingTableCommand::execute() noexcept {
     try {
-        std::cout << "Enter the path to the routing table: ";
+        std::cout << "Enter the path to the routing table (must contain .csv extension): ";
         std::string pathInput {};
         std::cin >> pathInput;
 

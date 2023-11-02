@@ -14,7 +14,8 @@ GetForwardingPortsCommand::GetForwardingPortsCommand(Context& context) noexcept:
 
 void GetForwardingPortsCommand::execute() noexcept {
     try {
-        std::cout << "Enter the path to the text file containing the IPv4 addresses to forward: ";
+        std::cout
+                << "Enter the path to the text file containing the IPv4 addresses to forward (must contain .txt extension): ";
         std::string path {};
         std::cin >> path;
 

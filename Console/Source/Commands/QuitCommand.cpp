@@ -23,7 +23,8 @@ void QuitCommand::execute() noexcept {
             return;
         }
 
-        std::cout << "Enter the path to the file where the forwarded ports will be saved: ";
+        std::cout
+                << "Enter the path to the file where the forwarded ports will be saved (must contain .txt extension): ";
         std::string path {};
         std::cin >> path;
 
