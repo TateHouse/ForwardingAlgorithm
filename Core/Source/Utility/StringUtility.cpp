@@ -3,7 +3,8 @@
 #include <sstream>
 
 namespace Core::Utility {
-const std::string StringUtility::getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) {
+const std::string StringUtility::getBinaryString(const std::bitset<32>& bitset,
+                                                 const bool includeOctetSeparators) noexcept {
     std::ostringstream stringStream {};
 
     for (auto octetIndex {3}; octetIndex >= 0; --octetIndex) {
@@ -20,7 +21,8 @@ const std::string StringUtility::getBinaryString(const std::bitset<32>& bitset, 
     return stringStream.str();
 }
 
-const std::string StringUtility::getDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) {
+const std::string StringUtility::getDecimalString(const std::bitset<32>& bitset,
+                                                  const bool includeOctetSeparators) noexcept {
     std::ostringstream stringStream {};
 
     for (auto octetIndex {3}; octetIndex >= 0; --octetIndex) {
@@ -42,5 +44,25 @@ const std::string StringUtility::getDecimalString(const std::bitset<32>& bitset,
     }
 
     return stringStream.str();
+}
+
+const std::string StringUtility::getPrimaryHeaderBar() noexcept {
+    std::string headerBar {};
+
+    for (auto index {0}; index < primaryHeaderBarLength; ++index) {
+        headerBar += primaryHeaderBarCharacter;
+    }
+
+    return headerBar;
+}
+
+const std::string StringUtility::getSecondaryHeaderBar() noexcept {
+    std::string secondaryBar {};
+
+    for (auto index {0}; index < secondaryHeaderBarLength; ++index) {
+        secondaryBar += secondaryHeaderBarCharacter;
+    }
+
+    return secondaryBar;
 }
 }

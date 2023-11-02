@@ -5,7 +5,7 @@ Router::Router(const Core::RoutingTableLoader& routingTableLoader) : routingTabl
 
 }
 
-const unsigned int Router::getForwardingPort(const Core::IPv4& destination) const {
+const unsigned int Router::getForwardingPort(const Core::IPv4& destination) const noexcept {
     unsigned int bestPrefixLengthMatch {0};
     unsigned int bestPortMatch {1};
 

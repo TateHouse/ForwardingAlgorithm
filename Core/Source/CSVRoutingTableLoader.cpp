@@ -1,13 +1,14 @@
 #include "CSVRoutingTableLoader.hpp"
 
-#include <format>
 #include <fstream>
 #include <sstream>
 #include <string>
 
+#include "Utility/PathUtility.hpp"
+
 namespace Core {
 CSVRoutingTableLoader::CSVRoutingTableLoader(const std::filesystem::path& path, const bool hasHeaderRow) :
-        path {validatePath(path)}, hasHeaderRow {hasHeaderRow} {
+        path {Utility::PathUtility::validatePath(path, ".csv")}, hasHeaderRow {hasHeaderRow} {
 }
 
 const std::vector<RouteMapping> CSVRoutingTableLoader::load() const {
@@ -49,29 +50,5 @@ const std::vector<RouteMapping> CSVRoutingTableLoader::load() const {
     }
 
     return routeMappings;
-}
-
-std::filesystem::path CSVRoutingTableLoader::validatePath(const std::filesystem::path& path) {
-    if (!std::filesystem::exists(path)) {
-        const auto message {
-                std::format("CSV Routing Table Loader: The specified path does not exist. Path: {}", path.string())};
-        throw std::invalid_argument {message};
-    }
-
-    if (!std::filesystem::is_regular_file(path)) {
-        const auto message {
-                std::format("CSV Routing Table Loader: The specified path is not a regular file. Path: {}",
-                            path.string())};
-        throw std::invalid_argument {message};
-    }
-
-    if (path.extension() != ".csv") {
-        const auto message {
-                std::format("CSV Routing Table Loader: The specified path does not point to a CSV file. Path: {}",
-                            path.string())};
-        throw std::invalid_argument {message};
-    }
-
-    return path;
 }
 }
