@@ -48,7 +48,12 @@ const std::bitset<32> IPv4::parse(const std::string& address) {
             throw std::invalid_argument {"Invalid IPv4: Each octet must be 1 to 3 digits long."};
         }
 
-        std::bitset<8> octetBits {static_cast<unsigned long long>(std::stoul(octet))};
+        const auto octetValue {static_cast<unsigned long long>(std::stoul(octet))};
+        if (octetValue > 255) {
+            throw std::invalid_argument {"Invalid IPv4: Each octet must be between 0 and 255."};
+        }
+
+        std::bitset<8> octetBits {octetValue};
 
         for (auto bitIndex {0}; bitIndex < 8; ++bitIndex) {
             const auto index {bitIndex + (octetIndex * 8)};

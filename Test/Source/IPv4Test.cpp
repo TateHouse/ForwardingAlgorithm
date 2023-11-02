@@ -34,6 +34,10 @@ TEST_F(IPv4Test, GivenIPv4StringWithOctetWithTooFewDigits_WhenConstruct_ThenThro
     EXPECT_THROW(IPv4 {"152.20..192"}, std::invalid_argument);
 }
 
+TEST_F(IPv4Test, GivenIPv4StringWithOctetGreaterThanTwoHundredFiftyFive_WhenConstruct_ThenThrowsInvalidArgument) {
+    EXPECT_THROW(IPv4 {"152.20.192.300"}, std::invalid_argument);
+}
+
 TEST_F(IPv4Test, GivenTwoEqualIPv4_WhenCompare_ThenReturnsTrue) {
     const IPv4 other {"152.20.192.0"};
 

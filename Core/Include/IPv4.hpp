@@ -17,7 +17,8 @@ public:
      * @param address The IPv4 address as a string in the format "xxx.xxx.xxx.xxx".
      *
      * An address is invalid if it does not contain three octet separators, a '.' character, if it contains more
-     * than four octets, or if any octet is empty or contains more than three digits.
+     * than four octets, if any octet is empty or contains more than three digits, and if any octet is not in the range
+     * [0, 255].
      *
      * @throws std::invalid_argument If the address is invalid.
      */
