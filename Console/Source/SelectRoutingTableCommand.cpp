@@ -21,8 +21,9 @@ void SelectRoutingTableCommand::execute() noexcept {
 
         std::cout << "==================================================" << '\n';
 
-        if (hasHeaderRowInput != "y" && hasHeaderRowInput != "n") {
-            throw std::invalid_argument {"Invalid input."};
+        while (hasHeaderRowInput != "y" && hasHeaderRowInput != "n") {
+            std::cout << "Invalid input. Please enter 'y' or 'n': ";
+            std::cin >> hasHeaderRowInput;
         }
 
         const auto hasHeaderRow {hasHeaderRowInput == "y"};
