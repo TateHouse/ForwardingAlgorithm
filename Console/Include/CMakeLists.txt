@@ -6,6 +6,7 @@ SET(HEADER_FILES
 		CommandRepository.hpp
 		Context.hpp
 		GetForwardingPortCommand.hpp
+		GetForwardingPortsCommand.hpp
 		QuitCommand.hpp
 		SelectRoutingTableCommand.hpp)
 

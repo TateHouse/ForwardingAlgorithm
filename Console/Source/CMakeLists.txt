@@ -6,6 +6,7 @@ SET(SOURCE_FILES
 		CommandRepository.cpp
 		Context.cpp
 		GetForwardingPortCommand.cpp
+		GetForwardingPortsCommand.cpp
 		QuitCommand.cpp
 		SelectRoutingTableCommand.cpp)
 

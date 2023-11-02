@@ -19,6 +19,6 @@ private:
     static const std::bitset<32> parse(const std::string& address);
 
 private:
-    const std::bitset<32> address;
+    std::bitset<32> address;
 };
 }
