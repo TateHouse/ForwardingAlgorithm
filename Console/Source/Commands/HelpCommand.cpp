@@ -1,5 +1,7 @@
 #include "Commands/HelpCommand.hpp"
 
+#include "Utility/StringUtility.hpp"
+
 namespace Console::Commands {
 HelpCommand::HelpCommand(Console::Context& context,
                          const std::vector<std::reference_wrapper<Command>>& commands) noexcept:
@@ -10,7 +12,7 @@ HelpCommand::HelpCommand(Console::Context& context,
 }
 
 void HelpCommand::execute() noexcept {
-    std::cout << "==================================================" << '\n';
+    std::cout << Core::Utility::StringUtility::getHeaderBar() << '\n';
 
     for (auto index {0}; index < commands.size(); ++index) {
         const auto name {commands[index].get().getName()};

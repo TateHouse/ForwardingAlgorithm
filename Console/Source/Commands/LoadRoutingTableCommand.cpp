@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "Utility/StringUtility.hpp"
 #include "CSVRoutingTableLoader.hpp"
 
 namespace Console::Commands {
@@ -19,7 +20,7 @@ void LoadRoutingTableCommand::execute() noexcept {
         std::string hasHeaderRowInput {};
         std::cin >> hasHeaderRowInput;
 
-        std::cout << "==================================================" << '\n';
+        std::cout << Core::Utility::StringUtility::getHeaderBar() << '\n';
 
         while (hasHeaderRowInput != "y" && hasHeaderRowInput != "n") {
             std::cout << "Invalid input. Please enter 'y' or 'n': ";

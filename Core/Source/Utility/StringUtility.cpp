@@ -45,4 +45,14 @@ const std::string StringUtility::getDecimalString(const std::bitset<32>& bitset,
 
     return stringStream.str();
 }
+
+const std::string StringUtility::getHeaderBar() noexcept {
+    std::string headerBar {};
+
+    for (auto index {0}; index < headerBarWidth; ++index) {
+        headerBar += headerBarCharacter;
+    }
+
+    return headerBar;
+}
 }

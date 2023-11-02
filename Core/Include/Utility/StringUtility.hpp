@@ -35,5 +35,11 @@ public:
      */
     static const std::string getDecimalString(const std::bitset<32>& bitset,
                                               const bool includeOctetSeparators) noexcept;
+
+    static const std::string getHeaderBar() noexcept;
+
+private:
+    static constexpr std::size_t headerBarWidth {50};
+    static constexpr char headerBarCharacter {'='};
 };
 }
