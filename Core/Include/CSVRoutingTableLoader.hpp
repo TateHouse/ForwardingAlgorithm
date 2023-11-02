@@ -12,13 +12,10 @@ public:
     virtual ~CSVRoutingTableLoader() override = default;
 
 public:
-    virtual const std::vector<RouteMapping> load() const override;
+    [[nodiscard]] virtual const std::vector<RouteMapping> load() const override;
 
 private:
-    static std::filesystem::path validatePath(const std::filesystem::path& path);
-
-private:
-    const bool hasHeaderRow;
     const std::filesystem::path path;
+    const bool hasHeaderRow;
 };
 }
