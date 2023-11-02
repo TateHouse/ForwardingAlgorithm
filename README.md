@@ -17,7 +17,7 @@ an IPv4 to based on a routing table. The algorithm was implemented in C++ and th
 2. Open a terminal and navigate to the directory.
 3. First, run the following
    command: `cmake -B Build/ -S . -DCMAKE_TOOLCHAIN_FILE="path to vcpkg/scripts/buildsystems/vcpkg.cmake"`
-4. Then, run the following command: `cmake --build Build/ --config Config`, where config is either Debug or Release.
+4. Then, run the following command: `cmake --build Build/ --config Config`, where Config is either Debug or Release.
 5. The executable will be located within the Build/Console/Config/ directory, where Config is either Debug or Release.
 6. Copy the files in the Console/Resources/ directory to the directory where the executable is located.
 7. Run the executable.
@@ -28,7 +28,7 @@ an IPv4 to based on a routing table. The algorithm was implemented in C++ and th
 2. Open a terminal and navigate to the directory.
 3. First, run the following
    command: `cmake -B Build/ -S . -DCMAKE_TOOLCHAIN_FILE="path to vcpkg/scripts/buildsystems/vcpkg.cmake"`
-4. Then, run the following command: `cmake --build Build/ --config Config`, where config is either Debug or Release.
+4. Then, run the following command: `cmake --build Build/ --config Config`, where Config is either Debug or Release.
 5. The executable will be located within the Build/Tests/Config/ directory, where Config is either Debug or Release.
 6. Run the executable using the terminal.
 
