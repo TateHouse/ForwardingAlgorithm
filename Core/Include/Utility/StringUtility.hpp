@@ -36,10 +36,13 @@ public:
     static const std::string getDecimalString(const std::bitset<32>& bitset,
                                               const bool includeOctetSeparators) noexcept;
 
-    static const std::string getHeaderBar() noexcept;
+    static const std::string getPrimaryHeaderBar() noexcept;
+    static const std::string getSecondaryHeaderBar() noexcept;
 
 private:
-    static constexpr std::size_t headerBarWidth {50};
-    static constexpr char headerBarCharacter {'='};
+    static constexpr std::size_t primaryHeaderBarLength {50};
+    static constexpr std::size_t secondaryHeaderBarLength {50};
+    static constexpr char primaryHeaderBarCharacter {'='};
+    static constexpr char secondaryHeaderBarCharacter {'-'};
 };
 }

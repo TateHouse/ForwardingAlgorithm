@@ -46,13 +46,23 @@ const std::string StringUtility::getDecimalString(const std::bitset<32>& bitset,
     return stringStream.str();
 }
 
-const std::string StringUtility::getHeaderBar() noexcept {
+const std::string StringUtility::getPrimaryHeaderBar() noexcept {
     std::string headerBar {};
 
-    for (auto index {0}; index < headerBarWidth; ++index) {
-        headerBar += headerBarCharacter;
+    for (auto index {0}; index < primaryHeaderBarLength; ++index) {
+        headerBar += primaryHeaderBarCharacter;
     }
 
     return headerBar;
+}
+
+const std::string StringUtility::getSecondaryHeaderBar() noexcept {
+    std::string secondaryBar {};
+
+    for (auto index {0}; index < secondaryHeaderBarLength; ++index) {
+        secondaryBar += secondaryHeaderBarCharacter;
+    }
+
+    return secondaryBar;
 }
 }

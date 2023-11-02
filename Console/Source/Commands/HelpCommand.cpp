@@ -12,7 +12,7 @@ HelpCommand::HelpCommand(Console::Context& context,
 }
 
 void HelpCommand::execute() noexcept {
-    std::cout << Core::Utility::StringUtility::getHeaderBar() << '\n';
+    std::cout << Core::Utility::StringUtility::getPrimaryHeaderBar() << '\n';
 
     for (auto index {0}; index < commands.size(); ++index) {
         const auto name {commands[index].get().getName()};

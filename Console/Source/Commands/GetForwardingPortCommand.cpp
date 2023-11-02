@@ -1,5 +1,6 @@
 #include "Commands/GetForwardingPortCommand.hpp"
 
+#include "Utility/StringUtility.hpp"
 #include "IPv4.hpp"
 
 namespace Console::Commands {
@@ -19,13 +20,13 @@ void GetForwardingPortCommand::execute() noexcept {
         std::cout << "Port: " << port << '\n';
         context.addForwardedPort(address, port);
     } catch (const std::invalid_argument& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     } catch (const std::runtime_error& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     }
 }
 

@@ -20,7 +20,7 @@ void LoadRoutingTableCommand::execute() noexcept {
         std::string hasHeaderRowInput {};
         std::cin >> hasHeaderRowInput;
 
-        std::cout << Core::Utility::StringUtility::getHeaderBar() << '\n';
+        std::cout << Core::Utility::StringUtility::getPrimaryHeaderBar() << '\n';
 
         while (hasHeaderRowInput != "y" && hasHeaderRowInput != "n") {
             std::cout << "Invalid input. Please enter 'y' or 'n': ";
@@ -37,13 +37,13 @@ void LoadRoutingTableCommand::execute() noexcept {
         std::cout << "Routing table loaded successfully." << '\n';
 
     } catch (const std::invalid_argument& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     } catch (const std::filesystem::filesystem_error& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     }
 }
 

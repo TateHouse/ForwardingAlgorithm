@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 
+#include "Utility/StringUtility.hpp"
 #include "TextForwardedPortsWriter.hpp"
 
 namespace Console::Commands {
@@ -32,13 +33,13 @@ void QuitCommand::execute() noexcept {
         forwardedPortsWriter->write();
 
     } catch (const std::invalid_argument& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     } catch (const std::filesystem::filesystem_error& exception) {
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
         std::cout << exception.what() << '\n';
-        std::cout << "--------------------------------------------------" << '\n';
+        std::cout << Core::Utility::StringUtility::getSecondaryHeaderBar() << '\n';
     }
 }
 
