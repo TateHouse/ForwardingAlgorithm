@@ -14,6 +14,14 @@ void QuitCommand::execute() noexcept {
     try {
         context.setIsNotRunning();
 
+        std::cout << "Do you want to save the forwarded ports? (y/n): ";
+        char answer {};
+        std::cin >> answer;
+
+        if (answer != 'y') {
+            return;
+        }
+
         std::cout << "Enter the path to the file where the forwarded ports will be saved: ";
         std::string path {};
         std::cin >> path;
