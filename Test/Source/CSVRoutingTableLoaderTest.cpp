@@ -14,7 +14,7 @@ class CSVRoutingTableLoaderTest : public testing::Test
 {
 public:
 	CSVRoutingTableLoaderTest() = default;
-	~CSVRoutingTableLoaderTest() override;
+	~CSVRoutingTableLoaderTest() noexcept override;
 
 protected:
 	static std::filesystem::path createTemporaryPathWithUniqueName(const std::string& name,
@@ -74,9 +74,9 @@ std::vector<RouteMapping> CSVRoutingTableLoaderTest::populateRoutingTableFile(co
 
 	for (const auto& routeMapping : routeMappings)
 	{
-		const auto ipString{Utility::StringUtility::getDecimalString(routeMapping.getIp().getAddress(), true)};
-		const auto prefixLengthString{routeMapping.getPrefixLength()};
-		const auto portString{routeMapping.getPort()};
+		const auto ipString{Utility::StringUtility::GetDecimalString(routeMapping.GetIP().GetAddress(), true)};
+		const auto prefixLengthString{routeMapping.GetPrefixLength()};
+		const auto portString{routeMapping.GetPort()};
 		const auto routeMappingString{std::format("{},{},{}\n", ipString, prefixLengthString, portString)};
 
 		fileStream << routeMappingString;
@@ -116,7 +116,7 @@ TEST_F(CSVRoutingTableLoaderTest, GivenEmptyFile_WhenLoad_ThenReturnsEmptyVector
 	fileStream.close();
 
 	const auto csvRoutingTableLoader{Core::CSVRoutingTableLoader{path, true}};
-	const auto loadedRouteMappings{csvRoutingTableLoader.load()};
+	const auto loadedRouteMappings{csvRoutingTableLoader.Load()};
 
 	EXPECT_THAT(loadedRouteMappings, testing::IsEmpty());
 }
@@ -125,7 +125,7 @@ TEST_F(CSVRoutingTableLoaderTest, GivenFileWithHeaderRow_WhenLoad_ThenReturnsVec
 {
 	const auto expectedRouteMappings{populateRoutingTableFile(true)};
 	const auto csvRoutingTableLoader{Core::CSVRoutingTableLoader{path, true}};
-	const auto loadedRouteMappings{csvRoutingTableLoader.load()};
+	const auto loadedRouteMappings{csvRoutingTableLoader.Load()};
 
 	EXPECT_THAT(loadedRouteMappings, testing::Eq(expectedRouteMappings));
 }
@@ -134,7 +134,7 @@ TEST_F(CSVRoutingTableLoaderTest, GivenFileWithoutHeaderRow_WhenLoad_ThenReturns
 {
 	const auto expectedRouteMappings{populateRoutingTableFile(false)};
 	const auto csvRoutingTableLoader{Core::CSVRoutingTableLoader{path, false}};
-	const auto loadedRouteMappings{csvRoutingTableLoader.load()};
+	const auto loadedRouteMappings{csvRoutingTableLoader.Load()};
 
 	EXPECT_THAT(loadedRouteMappings, testing::Eq(expectedRouteMappings));
 }

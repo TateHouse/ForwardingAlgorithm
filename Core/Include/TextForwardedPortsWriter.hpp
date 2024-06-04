@@ -2,7 +2,7 @@
 
 #include <filesystem>
 
-#include "ForwardedPortsWriter.hpp"
+#include "IForwardedPortsWriter.hpp"
 #include "IPv4.hpp"
 
 namespace Core
@@ -12,7 +12,7 @@ namespace Core
  *
  * @brief Writes forwarded ports to a text file.
  */
-class TextForwardedPortsWriter : public ForwardedPortsWriter
+class TextForwardedPortsWriter : public IForwardedPortsWriter
 {
 public:
 	/**
@@ -27,15 +27,15 @@ public:
 	TextForwardedPortsWriter(const std::filesystem::path& file,
 							 const std::vector<std::pair<IPv4, unsigned int>>& forwardedPorts);
 	TextForwardedPortsWriter(const TextForwardedPortsWriter& other) = default;
-	TextForwardedPortsWriter(TextForwardedPortsWriter&& other) = default;
-	~TextForwardedPortsWriter() override = default;
+	TextForwardedPortsWriter(TextForwardedPortsWriter&& other) noexcept = default;
+	~TextForwardedPortsWriter() noexcept override = default;
 
 public:
 	TextForwardedPortsWriter& operator=(const TextForwardedPortsWriter& other) = default;
-	TextForwardedPortsWriter& operator=(TextForwardedPortsWriter&& other) = default;
+	TextForwardedPortsWriter& operator=(TextForwardedPortsWriter&& other) noexcept = default;
 
 public:
-	void write() const override;
+	void Write() const override;
 
 private:
 	std::filesystem::path path;

@@ -5,7 +5,7 @@
 
 namespace Core::Utility
 {
-std::filesystem::path PathUtility::validatePath(const std::filesystem::path& path, const std::string_view extension)
+std::filesystem::path PathUtility::ValidatePath(const std::filesystem::path& path, const std::string_view extension)
 {
 	if (extension.empty() || extension.front() != '.')
 	{
@@ -32,7 +32,7 @@ std::filesystem::path PathUtility::validatePath(const std::filesystem::path& pat
 	return path;
 }
 
-std::filesystem::path PathUtility::createFile(const std::filesystem::path& path, const std::string_view extension)
+std::filesystem::path PathUtility::CreateFile(const std::filesystem::path& path, const std::string_view extension)
 {
 	if (extension.empty() || extension.front() != '.')
 	{

@@ -15,12 +15,12 @@ class PathUtility final
 public:
 	PathUtility() noexcept = delete;
 	PathUtility(const PathUtility& other) = delete;
-	PathUtility(PathUtility&& other) = delete;
+	PathUtility(PathUtility&& other) noexcept = delete;
 	~PathUtility() noexcept = delete;
 
 public:
 	PathUtility& operator=(const PathUtility& other) = delete;
-	PathUtility& operator=(PathUtility&& other) = delete;
+	PathUtility& operator=(PathUtility&& other) noexcept = delete;
 
 public:
 	/**
@@ -37,7 +37,7 @@ public:
 	 *
 	 * @throws std::invalid_argument If the path or extension is invalid.
 	 */
-	static std::filesystem::path validatePath(const std::filesystem::path& path, const std::string_view extension);
+	static std::filesystem::path ValidatePath(const std::filesystem::path& path, const std::string_view extension);
 
 	/**
 	 * @brief Creates or overrides a file.<br><br>
@@ -50,6 +50,6 @@ public:
 	 * @throws std::invalid_argument If the extension is invalid.
 	 * @throws std::filesystem::filesystem_error If the file could not be created or overridden.
 	 */
-	static std::filesystem::path createFile(const std::filesystem::path& path, const std::string_view extension);
+	static std::filesystem::path CreateFile(const std::filesystem::path& path, const std::string_view extension);
 };
 }

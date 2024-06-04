@@ -20,7 +20,7 @@ TEST_F(RouteMappingTest, GivenIPv4AndPrefixLength_WhenConstruct_ThenReturnsExpec
 {
 	const auto expectedSubnetMask{std::bitset<32>{"11111111111111111110000000000000"}};
 
-	EXPECT_THAT(routeMapping.getSubnetMask(), testing::Eq(expectedSubnetMask));
+	EXPECT_THAT(routeMapping.GetSubnetMask(), testing::Eq(expectedSubnetMask));
 }
 
 TEST_F(RouteMappingTest, GivenPrefixGreaterThanThirtyTwo_WhenConstruct_ThenThrowsInvalidArgument)

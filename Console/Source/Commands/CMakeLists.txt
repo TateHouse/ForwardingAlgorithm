@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 
 SET(SOURCE_FILES
-		Command.cpp
+    ICommand.cpp
 		CommandRepository.cpp
 		GetForwardingPortCommand.cpp
 		GetForwardingPortsCommand.cpp

@@ -22,10 +22,10 @@ TEST_F(RouterTest, WhenGetForwardingPortAndOnlyOneDestinationMatches_ThenReturns
 		RouteMapping{IPv4{"192.168.2.0"}, 24, 3}
 	};
 
-	EXPECT_CALL(mockRoutingTableLoader, load()).WillOnce(testing::Return(routingTable));
+	EXPECT_CALL(mockRoutingTableLoader, Load()).WillOnce(testing::Return(routingTable));
 
 	const auto router{Router{mockRoutingTableLoader}};
-	const auto forwardingPort{router.getForwardingPort(IPv4{"192.168.2.0"})};
+	const auto forwardingPort{router.GetForwardingPort(IPv4{"192.168.2.0"})};
 
 	EXPECT_THAT(forwardingPort, testing::Eq(3));
 }
@@ -37,10 +37,10 @@ TEST_F(RouterTest, WhenGetForwardingPortAndMultipleDestinationsMatch_ThenReturns
 		RouteMapping{IPv4{"192.168.1.0"}, 24, 3}
 	};
 
-	EXPECT_CALL(mockRoutingTableLoader, load()).WillOnce(testing::Return(routingTable));
+	EXPECT_CALL(mockRoutingTableLoader, Load()).WillOnce(testing::Return(routingTable));
 
 	const auto router{Router{mockRoutingTableLoader}};
-	const auto forwardingPort{router.getForwardingPort(IPv4{"192.168.1.1"})};
+	const auto forwardingPort{router.GetForwardingPort(IPv4{"192.168.1.1"})};
 
 	EXPECT_THAT(forwardingPort, testing::Eq(3));
 }
@@ -52,10 +52,10 @@ TEST_F(RouterTest, WhenGetForwardingPortAndNoDestinationMatches_ThenReturnsDefau
 		RouteMapping{IPv4{"192.168.2.0"}, 24, 3}
 	};
 
-	EXPECT_CALL(mockRoutingTableLoader, load()).WillOnce(testing::Return(routingTable));
+	EXPECT_CALL(mockRoutingTableLoader, Load()).WillOnce(testing::Return(routingTable));
 
 	const auto router{Router{mockRoutingTableLoader}};
-	const auto forwardingPort{router.getForwardingPort(IPv4{"192.168.3.1"})};
+	const auto forwardingPort{router.GetForwardingPort(IPv4{"192.168.3.1"})};
 
 	EXPECT_THAT(forwardingPort, testing::Eq(1));
 }

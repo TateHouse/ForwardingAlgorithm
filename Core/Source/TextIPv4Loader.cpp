@@ -9,11 +9,11 @@
 namespace Core
 {
 TextIPv4Loader::TextIPv4Loader(const std::filesystem::path& path) :
-	path{Utility::PathUtility::validatePath(path, ".txt")}
+	path{Utility::PathUtility::ValidatePath(path, ".txt")}
 {
 }
 
-std::vector<IPv4> TextIPv4Loader::load() const
+std::vector<IPv4> TextIPv4Loader::Load() const
 {
 	std::ifstream fileStream{path};
 	std::string line{};

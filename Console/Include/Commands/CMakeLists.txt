@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 
 SET(HEADER_FILES
-		Command.hpp
+    ICommand.hpp
 		CommandRepository.hpp
 		GetForwardingPortCommand.hpp
 		GetForwardingPortsCommand.hpp

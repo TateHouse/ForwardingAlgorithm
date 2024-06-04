@@ -1,14 +1,16 @@
 #include "Application.hpp"
 
-int main(int argc, char* argv[]) {
-    Console::Application application {};
-    application.initialize();
+int main(int argc, char* argv[])
+{
+	Console::Application application{};
+	Console::Application::Initialize();
 
-    while (application.getIsRunning()) {
-        application.update();
-    }
+	while (application.GetIsRunning())
+	{
+		application.Update();
+	}
 
-    application.shutdown();
+	Console::Application::Shutdown();
 
-    return 0;
+	return 0;
 }

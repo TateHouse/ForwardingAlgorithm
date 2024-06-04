@@ -9,12 +9,12 @@ namespace Core
 {
 TextForwardedPortsWriter::TextForwardedPortsWriter(const std::filesystem::path& file,
 												   const std::vector<std::pair<IPv4, unsigned int>>& forwardedPorts) :
-	path{Utility::PathUtility::createFile(file, file.extension().string())},
+	path{Utility::PathUtility::CreateFile(file, file.extension().string())},
 	forwardedPorts{forwardedPorts}
 {
 }
 
-void TextForwardedPortsWriter::write() const
+void TextForwardedPortsWriter::Write() const
 {
 	std::ofstream fileStream{path, std::ios::out};
 
@@ -32,7 +32,7 @@ void TextForwardedPortsWriter::write() const
 
 		fileStream
 		<< "IPv4: "
-		<< Utility::StringUtility::getDecimalString(ip.getAddress(), true)
+		<< Utility::StringUtility::GetDecimalString(ip.GetAddress(), true)
 		<< " Port: "
 		<< port
 		<< '\n';

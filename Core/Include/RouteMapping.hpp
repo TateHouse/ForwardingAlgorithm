@@ -24,21 +24,21 @@ public:
 	 */
 	RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port);
 	RouteMapping(const RouteMapping& other) = default;
-	RouteMapping(RouteMapping&& other) = default;
-	~RouteMapping() = default;
+	RouteMapping(RouteMapping&& other) noexcept = default;
+	~RouteMapping() noexcept = default;
 
 public:
 	RouteMapping& operator=(const RouteMapping& other) = default;
-	RouteMapping& operator=(RouteMapping&& other) = default;
+	RouteMapping& operator=(RouteMapping&& other) noexcept = default;
 	[[nodiscard]] bool operator==(const RouteMapping& other) const noexcept = default;
 	friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping) noexcept;
 
 public:
-	[[nodiscard]] const std::bitset<32>& getSubnetMask() const noexcept;
-	[[nodiscard]] std::string getSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept;
-	[[nodiscard]] const IPv4& getIp() const noexcept;
-	[[nodiscard]] uint8_t getPrefixLength() const noexcept;
-	[[nodiscard]] unsigned int getPort() const noexcept;
+	[[nodiscard]] const std::bitset<32>& GetSubnetMask() const noexcept;
+	[[nodiscard]] std::string GetSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept;
+	[[nodiscard]] const IPv4& GetIP() const noexcept;
+	[[nodiscard]] uint8_t GetPrefixLength() const noexcept;
+	[[nodiscard]] unsigned int GetPort() const noexcept;
 
 private:
 	/**
@@ -48,7 +48,7 @@ private:
 	 *
 	 * @throws std::invalid_argument If the prefix length is invalid.
 	 */
-	[[nodiscard]] std::bitset<32> calculateSubnetMask() const;
+	[[nodiscard]] std::bitset<32> CalculateSubnetMask() const;
 
 private:
 	IPv4 ip;

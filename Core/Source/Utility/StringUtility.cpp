@@ -4,7 +4,7 @@
 
 namespace Core::Utility
 {
-std::string StringUtility::getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept
+std::string StringUtility::GetBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept
 {
 	std::ostringstream stringStream{};
 
@@ -25,7 +25,7 @@ std::string StringUtility::getBinaryString(const std::bitset<32>& bitset, const 
 	return stringStream.str();
 }
 
-std::string StringUtility::getDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept
+std::string StringUtility::GetDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept
 {
 	std::ostringstream stringStream{};
 
@@ -54,7 +54,7 @@ std::string StringUtility::getDecimalString(const std::bitset<32>& bitset, const
 	return stringStream.str();
 }
 
-std::string StringUtility::getPrimaryHeaderBar() noexcept
+std::string StringUtility::GetPrimaryHeaderBar() noexcept
 {
 	std::string headerBar{};
 
@@ -66,7 +66,7 @@ std::string StringUtility::getPrimaryHeaderBar() noexcept
 	return headerBar;
 }
 
-std::string StringUtility::getSecondaryHeaderBar() noexcept
+std::string StringUtility::GetSecondaryHeaderBar() noexcept
 {
 	std::string secondaryBar{};
 

@@ -2,34 +2,41 @@
 
 #include "Utility/StringUtility.hpp"
 
-namespace Console::Commands {
+namespace Console::Commands
+{
 HelpCommand::HelpCommand(Console::Context& context,
-                         const std::vector<std::reference_wrapper<Command>>& commands) noexcept:
-        Command {context} {
-    this->commands.reserve(commands.size() + 1);
-    this->commands.emplace_back(*this);
-    this->commands.insert(this->commands.end(), commands.begin(), commands.end());
+						 const std::vector<std::reference_wrapper<ICommand>>& commands):
+	ICommand{context}
+{
+	this->commands.reserve(commands.size() + 1);
+	this->commands.emplace_back(*this);
+	this->commands.insert(this->commands.end(), commands.begin(), commands.end());
 }
 
-void HelpCommand::execute() noexcept {
-    std::cout << Core::Utility::StringUtility::getPrimaryHeaderBar() << '\n';
+void HelpCommand::Execute() noexcept
+{
+	std::cout << Core::Utility::StringUtility::GetPrimaryHeaderBar() << '\n';
 
-    for (auto index {0}; index < commands.size(); ++index) {
-        const auto name {commands[index].get().getName()};
-        const auto description {commands[index].get().getDescription()};
-        std::cout << name << ": " << description << '\n';
+	for (auto index{0}; index < commands.size(); ++index)
+	{
+		const auto name{commands[index].get().GetName()};
+		const auto description{commands[index].get().GetDescription()};
+		std::cout << name << ": " << description << '\n';
 
-        if (index != commands.size() - 1) {
-            std::cout << '\n';
-        }
-    }
+		if (index != commands.size() - 1)
+		{
+			std::cout << '\n';
+		}
+	}
 }
 
-const std::string HelpCommand::getName() const noexcept {
-    return "help";
+std::string HelpCommand::GetName() const noexcept
+{
+	return "help";
 }
 
-const std::string HelpCommand::getDescription() const noexcept {
-    return "Displays all available commands and their descriptions";
+std::string HelpCommand::GetDescription() const noexcept
+{
+	return "Displays all available commands and their descriptions";
 }
 }

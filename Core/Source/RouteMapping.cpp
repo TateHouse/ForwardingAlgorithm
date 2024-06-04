@@ -10,30 +10,30 @@ namespace Core
 RouteMapping::RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port) :
 	ip{ip},
 	prefixLength{prefixLength},
-	subnetMask{calculateSubnetMask()},
+	subnetMask{CalculateSubnetMask()},
 	port{port}
 {
 }
 
 std::ostream& operator<<(std::ostream& outputStream, const RouteMapping& routeMapping) noexcept
 {
-	const auto& address{routeMapping.getIp().getAddress()};
+	const auto& address{routeMapping.GetIP().GetAddress()};
 
-	outputStream << "IPv4 (Binary): " << Utility::StringUtility::getBinaryString(address, true) << '\n';
-	outputStream << "IPv4 (Decimal): " << Utility::StringUtility::getDecimalString(address, true) << '\n';
-	outputStream << "Prefix Length: " << static_cast<int>(routeMapping.getPrefixLength()) << '\n';
-	outputStream << "Subnet Mask (Binary): " << routeMapping.getSubnetMaskInBinary(true) << '\n';
-	outputStream << "Port: " << routeMapping.getPort();
+	outputStream << "IPv4 (Binary): " << Utility::StringUtility::GetBinaryString(address, true) << '\n';
+	outputStream << "IPv4 (Decimal): " << Utility::StringUtility::GetDecimalString(address, true) << '\n';
+	outputStream << "Prefix Length: " << static_cast<int>(routeMapping.GetPrefixLength()) << '\n';
+	outputStream << "Subnet Mask (Binary): " << routeMapping.GetSubnetMaskInBinary(true) << '\n';
+	outputStream << "Port: " << routeMapping.GetPort();
 
 	return outputStream;
 }
 
-const std::bitset<32>& RouteMapping::getSubnetMask() const noexcept
+const std::bitset<32>& RouteMapping::GetSubnetMask() const noexcept
 {
 	return subnetMask;
 }
 
-std::string RouteMapping::getSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept
+std::string RouteMapping::GetSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept
 {
 	std::ostringstream subnetMaskStream{};
 
@@ -54,22 +54,22 @@ std::string RouteMapping::getSubnetMaskInBinary(const bool includeOctetSeparator
 	return subnetMaskStream.str();
 }
 
-const IPv4& RouteMapping::getIp() const noexcept
+const IPv4& RouteMapping::GetIP() const noexcept
 {
 	return ip;
 }
 
-uint8_t RouteMapping::getPrefixLength() const noexcept
+uint8_t RouteMapping::GetPrefixLength() const noexcept
 {
 	return prefixLength;
 }
 
-unsigned int RouteMapping::getPort() const noexcept
+unsigned int RouteMapping::GetPort() const noexcept
 {
 	return port;
 }
 
-std::bitset<32> RouteMapping::calculateSubnetMask() const
+std::bitset<32> RouteMapping::CalculateSubnetMask() const
 {
 	if (static constexpr auto maxPrefixLength{32}; prefixLength > maxPrefixLength)
 	{

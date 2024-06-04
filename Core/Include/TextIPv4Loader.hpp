@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <vector>
 
-#include "IPv4Loader.hpp"
+#include "IIPv4Loader.hpp"
 
 namespace Core
 {
@@ -12,7 +12,7 @@ namespace Core
  *
  * @brief Loads IPv4 addresses from a text file.
  */
-class TextIPv4Loader final : public IPv4Loader
+class TextIPv4Loader final : public IIPv4Loader
 {
 public:
 	/**
@@ -25,15 +25,15 @@ public:
 	 */
 	explicit TextIPv4Loader(const std::filesystem::path& path);
 	TextIPv4Loader(const TextIPv4Loader& other) = default;
-	TextIPv4Loader(TextIPv4Loader&& other) = default;
-	~TextIPv4Loader() override = default;
+	TextIPv4Loader(TextIPv4Loader&& other) noexcept = default;
+	~TextIPv4Loader() noexcept override = default;
 
 public:
 	TextIPv4Loader& operator=(const TextIPv4Loader& other) = default;
-	TextIPv4Loader& operator=(TextIPv4Loader&& other) = default;
+	TextIPv4Loader& operator=(TextIPv4Loader&& other) noexcept = default;
 
 public:
-	[[nodiscard]] std::vector<IPv4> load() const override;
+	[[nodiscard]] std::vector<IPv4> Load() const override;
 
 private:
 	std::filesystem::path path;

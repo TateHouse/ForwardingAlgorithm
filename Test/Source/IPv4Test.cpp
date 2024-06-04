@@ -8,7 +8,7 @@ class IPv4Test : public ::testing::Test
 {
 public:
 	IPv4Test() = default;
-	~IPv4Test() override = default;
+	~IPv4Test() noexcept override = default;
 
 protected:
 	IPv4 ip{"152.20.192.0"};
@@ -18,7 +18,7 @@ TEST_F(IPv4Test, GivenValidIPv4String_WhenConstruct_ThenConvertsStringToBinary)
 {
 	const std::bitset<32> expected{0b10011000'00010100'11000000'00000000};
 
-	EXPECT_THAT(ip.getAddress(), testing::Eq(expected));
+	EXPECT_THAT(ip.GetAddress(), testing::Eq(expected));
 }
 
 TEST_F(IPv4Test, GivenIPv4StringWithTooFewOctetSeparators_WhenConstruct_ThenThrowsInvalidArgument)

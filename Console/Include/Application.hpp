@@ -2,33 +2,45 @@
 
 #include "Commands/CommandRepository.hpp"
 
-namespace Console {
+namespace Console
+{
 /**
  * @class Application
  *
  * @brief The console application.
  */
-class Application final {
+class Application final
+{
 public:
-    /**
-     * @brief Initializes the application.
-     */
-    void initialize() noexcept;
+	Application() noexcept = default;
+	Application(const Application& other) = delete;
+	Application(Application&& other) noexcept = default;
+	~Application() noexcept = default;
 
-    /**
-     * @brief Runs the application.
-     */
-    void update() noexcept;
+public:
+	Application& operator=(const Application& other) = delete;
+	Application& operator=(Application&& other) = delete;
 
-    /**
-     * @brief Shuts down the application.
-     */
-    void shutdown() noexcept;
+public:
+	/**
+	 * @brief Initializes the application.
+	 */
+	static void Initialize() noexcept;
 
-    [[nodiscard]] const bool getIsRunning() const noexcept;
+	/**
+	 * @brief Runs the application.
+	 */
+	void Update() const noexcept;
+
+	/**
+	 * @brief Shuts down the application.
+	 */
+	static void Shutdown() noexcept;
+
+	[[nodiscard]] bool GetIsRunning() const noexcept;
 
 private:
-    Context context {};
-    Commands::CommandRepository commandRepository {context};
+	Context context{};
+	Commands::CommandRepository commandRepository{context};
 };
 }

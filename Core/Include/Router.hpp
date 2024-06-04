@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "RouteMapping.hpp"
-#include "RoutingTableLoader.hpp"
+#include "IRoutingTableLoader.hpp"
 
 namespace Core
 {
@@ -20,14 +20,14 @@ public:
 	 *
 	 * @param routingTableLoader A routing table loader.
 	 */
-	explicit Router(const RoutingTableLoader& routingTableLoader);
+	explicit Router(const IRoutingTableLoader& routingTableLoader);
 	Router(const Router& other) = default;
-	Router(Router&& other) = default;
-	~Router() = default;
+	Router(Router&& other) noexcept = default;
+	~Router() noexcept = default;
 
 public:
 	Router& operator=(const Router& other) = default;
-	Router& operator=(Router&& other) = default;
+	Router& operator=(Router&& other) noexcept = default;
 
 public:
 	/**
@@ -44,7 +44,7 @@ public:
 	 *
 	 * @return The port to forward the given IPv4 address to.
 	 */
-	[[nodiscard]] unsigned int getForwardingPort(const IPv4& destination) const noexcept;
+	[[nodiscard]] unsigned int GetForwardingPort(const IPv4& destination) const noexcept;
 
 private:
 	std::vector<RouteMapping> routingTable;

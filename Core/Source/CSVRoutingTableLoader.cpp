@@ -9,12 +9,12 @@
 namespace Core
 {
 CSVRoutingTableLoader::CSVRoutingTableLoader(const std::filesystem::path& path, const bool hasHeaderRow) :
-	path{Utility::PathUtility::validatePath(path, ".csv")},
+	path{Utility::PathUtility::ValidatePath(path, ".csv")},
 	hasHeaderRow{hasHeaderRow}
 {
 }
 
-std::vector<RouteMapping> CSVRoutingTableLoader::load() const
+std::vector<RouteMapping> CSVRoutingTableLoader::Load() const
 {
 	std::ifstream fileStream{path};
 	std::string line{};

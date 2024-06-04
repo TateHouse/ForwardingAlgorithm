@@ -6,7 +6,7 @@
 namespace Core
 {
 IPv4::IPv4(const std::string& address) :
-	address{parse(address)}
+	address{Parse(address)}
 {
 }
 
@@ -15,12 +15,12 @@ std::bitset<32> IPv4::operator&(const std::bitset<32>& other) const noexcept
 	return address & other;
 }
 
-const std::bitset<32>& IPv4::getAddress() const
+const std::bitset<32>& IPv4::GetAddress() const noexcept
 {
 	return address;
 }
 
-std::bitset<32> IPv4::parse(const std::string& address)
+std::bitset<32> IPv4::Parse(const std::string& address)
 {
 	static constexpr auto octetSeparator{'.'};
 	auto octetSeparatorCount{0};

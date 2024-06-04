@@ -26,8 +26,8 @@ public:
 	 */
 	explicit IPv4(const std::string& address);
 	IPv4(const IPv4& other) = default;
-	IPv4(IPv4&& other) = default;
-	~IPv4() = default;
+	IPv4(IPv4&& other) noexcept = default;
+	~IPv4() noexcept = default;
 
 public:
 	IPv4& operator=(const IPv4& other) = default;
@@ -36,7 +36,7 @@ public:
 	[[nodiscard]] std::bitset<32> operator&(const std::bitset<32>& other) const noexcept;
 
 public:
-	[[nodiscard]] const std::bitset<32>& getAddress() const;
+	[[nodiscard]] const std::bitset<32>& GetAddress() const noexcept;
 
 private:
 	/**
@@ -46,7 +46,7 @@ private:
 	 *
 	 * @return The address as a bitset.
 	 */
-	static std::bitset<32> parse(const std::string& address);
+	static std::bitset<32> Parse(const std::string& address);
 
 private:
 	std::bitset<32> address;

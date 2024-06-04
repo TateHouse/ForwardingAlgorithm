@@ -3,7 +3,7 @@
 #include <filesystem>
 
 #include "RouteMapping.hpp"
-#include "RoutingTableLoader.hpp"
+#include "IRoutingTableLoader.hpp"
 
 namespace Core
 {
@@ -12,7 +12,7 @@ namespace Core
  *
  * @brief Loads a routing table from a CSV file.
  */
-class CSVRoutingTableLoader final : public RoutingTableLoader
+class CSVRoutingTableLoader final : public IRoutingTableLoader
 {
 public:
 	/**
@@ -26,15 +26,15 @@ public:
 	 */
 	explicit CSVRoutingTableLoader(const std::filesystem::path& path, const bool hasHeaderRow);
 	CSVRoutingTableLoader(const CSVRoutingTableLoader& other) = default;
-	CSVRoutingTableLoader(CSVRoutingTableLoader&& other) = default;
-	~CSVRoutingTableLoader() override = default;
+	CSVRoutingTableLoader(CSVRoutingTableLoader&& other) noexcept = default;
+	~CSVRoutingTableLoader() noexcept override = default;
 
 public:
 	CSVRoutingTableLoader& operator=(const CSVRoutingTableLoader& other) = default;
 	CSVRoutingTableLoader& operator=(CSVRoutingTableLoader&& other) noexcept = default;
 
 public:
-	[[nodiscard]] std::vector<RouteMapping> load() const override;
+	[[nodiscard]] std::vector<RouteMapping> Load() const override;
 
 private:
 	std::filesystem::path path;

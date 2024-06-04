@@ -2,28 +2,28 @@
 
 namespace Core
 {
-Router::Router(const Core::RoutingTableLoader& routingTableLoader) :
-	routingTable{routingTableLoader.load()}
+Router::Router(const Core::IRoutingTableLoader& routingTableLoader) :
+	routingTable{routingTableLoader.Load()}
 {
 }
 
-unsigned int Router::getForwardingPort(const Core::IPv4& destination) const noexcept
+unsigned int Router::GetForwardingPort(const Core::IPv4& destination) const noexcept
 {
 	unsigned int bestPrefixLengthMatch{0};
 	unsigned int bestPortMatch{1};
 
 	for (const auto& routeMapping : routingTable)
 	{
-		const auto subnetMask{routeMapping.getSubnetMask()};
+		const auto subnetMask{routeMapping.GetSubnetMask()};
 
-		if ((destination & subnetMask) == (routeMapping.getIp() & subnetMask))
+		if ((destination & subnetMask) == (routeMapping.GetIP() & subnetMask))
 		{
-			const unsigned int prefixLength{routeMapping.getPrefixLength()};
+			const unsigned int prefixLength{routeMapping.GetPrefixLength()};
 
 			if (prefixLength > bestPrefixLengthMatch)
 			{
 				bestPrefixLengthMatch = prefixLength;
-				bestPortMatch = routeMapping.getPort();
+				bestPortMatch = routeMapping.GetPort();
 			}
 		}
 	}

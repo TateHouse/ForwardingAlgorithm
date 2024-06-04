@@ -6,26 +6,38 @@
 
 #include "IPv4.hpp"
 #include "Router.hpp"
-#include "RoutingTableLoader.hpp"
+#include "IRoutingTableLoader.hpp"
 
-namespace Console {
+namespace Console
+{
 /**
  * @class Context
  *
  * @brief A class that holds the shared state of the application.
  */
-class Context final {
+class Context final
+{
 public:
-    [[nodiscard]] const bool getIsRunning() const noexcept;
-    void setIsNotRunning() noexcept;
-    [[nodiscard]] const std::unique_ptr<Core::Router>& getRouter() const;
-    void setRouter(const Core::RoutingTableLoader& routingTableLoader) noexcept;
-    void addForwardedPort(const Core::IPv4& ip, const unsigned int port) noexcept;
-    [[nodiscard]] const std::vector<std::pair<Core::IPv4, unsigned int>>& getForwardedPorts() const noexcept;
+	Context() = default;
+	Context(const Context& other) = delete;
+	Context(Context&& other) noexcept = default;
+	~Context() noexcept = default;
+
+public:
+	Context& operator=(const Context& other) = delete;
+	Context& operator=(Context&& other) noexcept = default;
+
+public:
+	[[nodiscard]] bool GetIsRunning() const noexcept;
+	void SetIsNotRunning() noexcept;
+	[[nodiscard]] const std::unique_ptr<Core::Router>& GetRouter() const;
+	void SetRouter(const Core::IRoutingTableLoader& routingTableLoader) noexcept;
+	void AddForwardedPort(const Core::IPv4& ip, const unsigned int port) noexcept;
+	[[nodiscard]] const std::vector<std::pair<Core::IPv4, unsigned int>>& GetForwardedPorts() const noexcept;
 
 private:
-    bool isRunning {true};
-    std::unique_ptr<Core::Router> router {nullptr};
-    std::vector<std::pair<Core::IPv4, unsigned int>> routedPorts {};
+	bool isRunning{true};
+	std::unique_ptr<Core::Router> router{nullptr};
+	std::vector<std::pair<Core::IPv4, unsigned int>> routedPorts{};
 };
 }

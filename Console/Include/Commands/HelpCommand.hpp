@@ -2,31 +2,39 @@
 
 #include <vector>
 
-#include "Command.hpp"
+#include "ICommand.hpp"
 
-namespace Console::Commands {
+namespace Console::Commands
+{
 /**
  * @class HelpCommand
  *
  * @brief A command for displaying information about all commands.
  */
-class HelpCommand final : public Command {
+class HelpCommand final : public ICommand
+{
 public:
-    /**
-     * @brief Construct a new HelpCommand instance.
-     *
-     * @param context The shared application context.
-     * @param commands The commands to display information about.
-     */
-    HelpCommand(Context& context, const std::vector<std::reference_wrapper<Command>>& commands) noexcept;
-    virtual ~HelpCommand() noexcept override = default;
+	/**
+	 * @brief Construct a new HelpCommand instance.
+	 *
+	 * @param context The shared application context.
+	 * @param commands The commands to display information about.
+	 */
+	HelpCommand(Context& context, const std::vector<std::reference_wrapper<ICommand>>& commands);
+	HelpCommand(const HelpCommand& other) = default;
+	HelpCommand(HelpCommand&& other) noexcept = default;
+	~HelpCommand() noexcept override = default;
 
 public:
-    virtual void execute() noexcept override;
-    [[nodiscard]] virtual const std::string getName() const noexcept override;
-    [[nodiscard]] virtual const std::string getDescription() const noexcept override;
+	HelpCommand& operator=(const HelpCommand& other) = delete;
+	HelpCommand& operator=(HelpCommand&& other) noexcept = delete;
+
+public:
+	void Execute() noexcept override;
+	[[nodiscard]] std::string GetName() const noexcept override;
+	[[nodiscard]] std::string GetDescription() const noexcept override;
 
 private:
-    std::vector<std::reference_wrapper<Command>> commands;
+	std::vector<std::reference_wrapper<ICommand>> commands;
 };
 }

@@ -1,26 +1,34 @@
 #pragma once
 
-#include "Command.hpp"
+#include "ICommand.hpp"
 
-namespace Console::Commands {
+namespace Console::Commands
+{
 /**
  * @class GetForwardingPortsCommand
  *
  * @brief A command for getting the forwarding ports for a collection of IPv4 addresses.
  */
-class GetForwardingPortsCommand final : public Command {
+class GetForwardingPortsCommand final : public ICommand
+{
 public:
-    /**
-     * @brief Construct a new GetForwardingPortsCommand instance.
-     *
-     * @param context The shared application context.
-     */
-    explicit GetForwardingPortsCommand(Context& context) noexcept;
-    virtual ~GetForwardingPortsCommand() noexcept override = default;
+	/**
+	 * @brief Construct a new GetForwardingPortsCommand instance.
+	 *
+	 * @param context The shared application context.
+	 */
+	explicit GetForwardingPortsCommand(Context& context) noexcept;
+	GetForwardingPortsCommand(const GetForwardingPortsCommand& other) = default;
+	GetForwardingPortsCommand(GetForwardingPortsCommand&& other) noexcept = default;
+	~GetForwardingPortsCommand() noexcept override = default;
 
 public:
-    virtual void execute() noexcept override;
-    [[nodiscard]] virtual const std::string getName() const noexcept override;
-    [[nodiscard]] virtual const std::string getDescription() const noexcept override;
+	GetForwardingPortsCommand& operator=(const GetForwardingPortsCommand& other) = delete;
+	GetForwardingPortsCommand& operator=(GetForwardingPortsCommand&& other) noexcept = delete;
+
+public:
+	void Execute() override;
+	[[nodiscard]] std::string GetName() const noexcept override;
+	[[nodiscard]] std::string GetDescription() const noexcept override;
 };
 }

@@ -15,12 +15,12 @@ class StringUtility final
 public:
 	StringUtility() noexcept = delete;
 	StringUtility(const StringUtility& other) = delete;
-	StringUtility(StringUtility&& other) = delete;
+	StringUtility(StringUtility&& other) noexcept = delete;
 	~StringUtility() noexcept = delete;
 
 public:
 	StringUtility& operator=(const StringUtility& other) = delete;
-	StringUtility& operator=(StringUtility&& other) = delete;
+	StringUtility& operator=(StringUtility&& other) noexcept = delete;
 
 public:
 	/**
@@ -31,7 +31,7 @@ public:
 	 *
 	 * @return The binary string.
 	 */
-	static std::string getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
+	static std::string GetBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
 
 	/**
 	 * @brief Converts a bitset to a decimal string.
@@ -41,10 +41,10 @@ public:
 	 *
 	 * @return The decimal string.
 	 */
-	static std::string getDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
+	static std::string GetDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
 
-	static std::string getPrimaryHeaderBar() noexcept;
-	static std::string getSecondaryHeaderBar() noexcept;
+	static std::string GetPrimaryHeaderBar() noexcept;
+	static std::string GetSecondaryHeaderBar() noexcept;
 
 private:
 	static constexpr std::size_t primaryHeaderBarLength{50};
