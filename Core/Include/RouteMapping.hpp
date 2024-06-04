@@ -5,48 +5,55 @@
 
 #include "IPv4.hpp"
 
-namespace Core {
+namespace Core
+{
 /**
  * @class RouteMapping
  *
  * @brief A class that represents a routing table entry. The prefix length is used to calculate the subnet mask.
  */
-class RouteMapping final {
+class RouteMapping final
+{
 public:
-    /**
-     * @brief Construct a new Route Mapping instance.
-     *
-     * @param ip An IPv4 address.
-     * @param prefixLength The prefix length.
-     * @param port The port.
-     */
-    RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port);
+	/**
+	 * @brief Construct a new Route Mapping instance.
+	 *
+	 * @param ip An IPv4 address.
+	 * @param prefixLength The prefix length.
+	 * @param port The port.
+	 */
+	RouteMapping(const IPv4& ip, uint8_t prefixLength, const unsigned int port);
+	RouteMapping(const RouteMapping& other) = default;
+	RouteMapping(RouteMapping&& other) = default;
+	~RouteMapping() = default;
 
 public:
-    [[nodiscard]] const bool operator==(const RouteMapping& other) const noexcept;
-    friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping) noexcept;
+	RouteMapping& operator=(const RouteMapping& other) = default;
+	RouteMapping& operator=(RouteMapping&& other) = default;
+	[[nodiscard]] bool operator==(const RouteMapping& other) const noexcept = default;
+	friend std::ostream& operator<<(std::ostream& os, const RouteMapping& routeMapping) noexcept;
 
 public:
-    [[nodiscard]] const std::bitset<32>& getSubnetMask() const noexcept;
-    [[nodiscard]] const std::string getSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept;
-    [[nodiscard]] const IPv4& getIp() const noexcept;
-    [[nodiscard]] const uint8_t getPrefixLength() const noexcept;
-    [[nodiscard]] const unsigned int getPort() const noexcept;
+	[[nodiscard]] const std::bitset<32>& getSubnetMask() const noexcept;
+	[[nodiscard]] std::string getSubnetMaskInBinary(const bool includeOctetSeparators) const noexcept;
+	[[nodiscard]] const IPv4& getIp() const noexcept;
+	[[nodiscard]] uint8_t getPrefixLength() const noexcept;
+	[[nodiscard]] unsigned int getPort() const noexcept;
 
 private:
-    /**
-     * @brief Calculates the subnet mask based on the prefix length.
-     *
-     * @return The subnet mask.
-     *
-     * @throws std::invalid_argument If the prefix length is invalid.
-     */
-    [[nodiscard]] const std::bitset<32> calculateSubnetMask() const;
+	/**
+	 * @brief Calculates the subnet mask based on the prefix length.
+	 *
+	 * @return The subnet mask.
+	 *
+	 * @throws std::invalid_argument If the prefix length is invalid.
+	 */
+	[[nodiscard]] std::bitset<32> calculateSubnetMask() const;
 
 private:
-    const IPv4 ip;
-    const uint8_t prefixLength;
-    const std::bitset<32> subnetMask;
-    const unsigned int port;
+	IPv4 ip;
+	uint8_t prefixLength;
+	std::bitset<32> subnetMask;
+	unsigned int port;
 };
 }

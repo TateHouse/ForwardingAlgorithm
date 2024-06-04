@@ -3,64 +3,72 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace Core {
-IPv4::IPv4(const std::string& address) : address {parse(address)} {
-
+namespace Core
+{
+IPv4::IPv4(const std::string& address) :
+	address{parse(address)}
+{
 }
 
-const bool IPv4::operator==(const IPv4& other) const noexcept {
-    return address == other.address;
+std::bitset<32> IPv4::operator&(const std::bitset<32>& other) const noexcept
+{
+	return address & other;
 }
 
-const std::bitset<32> IPv4::operator&(const std::bitset<32>& other) const noexcept {
-    return address & other;
+const std::bitset<32>& IPv4::getAddress() const
+{
+	return address;
 }
 
-const std::bitset<32>& IPv4::getAddress() const {
-    return address;
-}
+std::bitset<32> IPv4::parse(const std::string& address)
+{
+	static constexpr auto octetSeparator{'.'};
+	auto octetSeparatorCount{0};
 
-const std::bitset<32> IPv4::parse(const std::string& address) {
-    static constexpr auto octetSeparator {'.'};
-    auto octetSeparatorCount {0};
+	for (auto character : address)
+	{
+		if (character == octetSeparator)
+		{
+			++octetSeparatorCount;
+		}
+	}
 
-    for (auto character : address) {
-        if (character == octetSeparator) {
-            ++octetSeparatorCount;
-        }
-    }
+	if (static constexpr auto expectedOctetSeparatorCount{3}; octetSeparatorCount != expectedOctetSeparatorCount)
+	{
+		throw std::invalid_argument{"Invalid IPv4: There must be 3 octet separators, a '.' character, in the address."};
+	}
 
-    if (static constexpr auto expectedOctetSeparatorCount {3}; octetSeparatorCount != expectedOctetSeparatorCount) {
-        throw std::invalid_argument {
-                "Invalid IPv4: There must be 3 octet separators, a '.' character, in the address."};
-    }
+	std::bitset<32> addressBits{};
+	std::stringstream addressStream{address};
+	std::string octet{};
 
-    std::bitset<32> addressBits {};
-    std::stringstream addressStream {address};
-    std::string octet {};
+	for (auto octetIndex{3}; octetIndex >= 0; --octetIndex)
+	{
+		if (!std::getline(addressStream, octet, octetSeparator))
+		{
+			throw std::invalid_argument{"Invalid IPv4: There must be 4 octets in the address."};
+		}
 
-    for (auto octetIndex {3}; octetIndex >= 0; --octetIndex) {
-        if (!std::getline(addressStream, octet, octetSeparator)) {
-            throw std::invalid_argument {"Invalid IPv4: There must be 4 octets in the address."};
-        }
+		if (octet.empty() || octet.length() > 3)
+		{
+			throw std::invalid_argument{"Invalid IPv4: Each octet must be 1 to 3 digits long."};
+		}
 
-        if (octet.empty() || octet.length() > 3) {
-            throw std::invalid_argument {"Invalid IPv4: Each octet must be 1 to 3 digits long."};
-        }
+		const auto octetValue{static_cast<unsigned long long>(std::stoul(octet))};
+		if (octetValue > 255)
+		{
+			throw std::invalid_argument{"Invalid IPv4: Each octet must be between 0 and 255."};
+		}
 
-        const auto octetValue {static_cast<unsigned long long>(std::stoul(octet))};
-        if (octetValue > 255) {
-            throw std::invalid_argument {"Invalid IPv4: Each octet must be between 0 and 255."};
-        }
+		std::bitset<8> octetBits{octetValue};
 
-        std::bitset<8> octetBits {octetValue};
+		for (auto bitIndex{0}; bitIndex < 8; ++bitIndex)
+		{
+			const auto index{bitIndex + (octetIndex * 8)};
+			addressBits[index] = octetBits[bitIndex];
+		}
+	}
 
-        for (auto bitIndex {0}; bitIndex < 8; ++bitIndex) {
-            const auto index {bitIndex + (octetIndex * 8)};
-            addressBits[index] = octetBits[bitIndex];
-        }
-    }
-
-    return addressBits;
+	return addressBits;
 }
 }

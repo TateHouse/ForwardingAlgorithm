@@ -3,46 +3,53 @@
 #include <bitset>
 #include <string>
 
-namespace Core::Utility {
+namespace Core::Utility
+{
 /**
  * @class StringUtility
  *
  * @brief Provides utility functions for strings.
  */
-class StringUtility final {
+class StringUtility final
+{
 public:
-    StringUtility() noexcept = delete;
-    ~StringUtility() noexcept = delete;
+	StringUtility() noexcept = delete;
+	StringUtility(const StringUtility& other) = delete;
+	StringUtility(StringUtility&& other) = delete;
+	~StringUtility() noexcept = delete;
 
 public:
-    /**
-     * @brief Converts a bitset to a binary string.
-     *
-     * @param bitset The bitset to convert.
-     * @param includeOctetSeparators Whether or not to include octet separators.
-     *
-     * @return The binary string.
-     */
-    static const std::string getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
+	StringUtility& operator=(const StringUtility& other) = delete;
+	StringUtility& operator=(StringUtility&& other) = delete;
 
-    /**
-     * @brief Converts a bitset to a decimal string.
-     *
-     * @param bitset The bitset to convert.
-     * @param includeOctetSeparators Whether or not to include octet separators.
-     *
-     * @return The decimal string.
-     */
-    static const std::string getDecimalString(const std::bitset<32>& bitset,
-                                              const bool includeOctetSeparators) noexcept;
+public:
+	/**
+	 * @brief Converts a bitset to a binary string.
+	 *
+	 * @param bitset The bitset to convert.
+	 * @param includeOctetSeparators Whether or not to include octet separators.
+	 *
+	 * @return The binary string.
+	 */
+	static std::string getBinaryString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
 
-    static const std::string getPrimaryHeaderBar() noexcept;
-    static const std::string getSecondaryHeaderBar() noexcept;
+	/**
+	 * @brief Converts a bitset to a decimal string.
+	 *
+	 * @param bitset The bitset to convert.
+	 * @param includeOctetSeparators Whether or not to include octet separators.
+	 *
+	 * @return The decimal string.
+	 */
+	static std::string getDecimalString(const std::bitset<32>& bitset, const bool includeOctetSeparators) noexcept;
+
+	static std::string getPrimaryHeaderBar() noexcept;
+	static std::string getSecondaryHeaderBar() noexcept;
 
 private:
-    static constexpr std::size_t primaryHeaderBarLength {50};
-    static constexpr std::size_t secondaryHeaderBarLength {50};
-    static constexpr char primaryHeaderBarCharacter {'='};
-    static constexpr char secondaryHeaderBarCharacter {'-'};
+	static constexpr std::size_t primaryHeaderBarLength{50};
+	static constexpr std::size_t secondaryHeaderBarLength{50};
+	static constexpr char primaryHeaderBarCharacter{'='};
+	static constexpr char secondaryHeaderBarCharacter{'-'};
 };
 }
