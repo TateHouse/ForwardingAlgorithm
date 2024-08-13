@@ -1,4 +1,8 @@
-# Forwarding Algorithm <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/uncw-logo.png" width="300" height="300" align="right" >
+<div align="center">
+<img src="https://cdn.freebiesupply.com/logos/thumbs/2x/uncw-logo.png" width="300" height="300">
+</div>
+
+# Forwarding Algorithm
 
 ## Overview
 
